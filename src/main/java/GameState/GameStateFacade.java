@@ -16,4 +16,10 @@ public class GameStateFacade {
         return ticTacToeMap;
     }
 
+    public Character inputPosition(Position position, Character sign) {
+        Character resultOfAdd = ticTacToeMap.put(position, sign);
+        return resultOfAdd;
+    }
+
+
 }

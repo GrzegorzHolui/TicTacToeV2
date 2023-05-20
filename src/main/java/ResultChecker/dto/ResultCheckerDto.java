@@ -1,6 +1,8 @@
 package ResultChecker.dto;
 
-public record ResultCheckerDto(ResultCheckerDto result, String message) {
+import ResultChecker.ResultOfRound;
+
+public record ResultCheckerDto(ResultOfRound result, String message) {
 
 
 }

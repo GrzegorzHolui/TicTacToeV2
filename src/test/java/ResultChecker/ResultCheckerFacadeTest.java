@@ -1,6 +1,7 @@
 package ResultChecker;
 
 import PositionReceiver.Position;
+import ResultChecker.dto.ResultCheckerDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -25,10 +26,11 @@ class ResultCheckerFacadeTest {
         map.put(new Position(1, 1), 'X');
         map.put(new Position(2, 2), 'X');
         //when
-        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        ResultCheckerDto result = resultCheckerFacade.checkWhoWin(map);
         //then
         ResultOfRound expected = ResultOfRound.UserWon;
-        assertThat(result.message).isEqualTo(expected.message);
+        assertThat(result.result().message).isEqualTo(expected.message);
+        assertThat(result.message()).isEqualTo("Good");
     }
 
     @Test
@@ -45,10 +47,11 @@ class ResultCheckerFacadeTest {
         map.put(new Position(1, 1), 'O');
         map.put(new Position(0, 2), 'O');
         //when
-        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        ResultCheckerDto result = resultCheckerFacade.checkWhoWin(map);
         //then
         ResultOfRound expected = ResultOfRound.UserWon;
-        assertThat(result.message).isEqualTo(expected.message);
+        assertThat(result.result().message).isEqualTo(expected.message);
+        assertThat(result.message()).isEqualTo("Good");
     }
 
     @Test
@@ -65,10 +68,11 @@ class ResultCheckerFacadeTest {
         map.put(new Position(2, 2), 'O');
 
         //when
-        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        ResultCheckerDto result = resultCheckerFacade.checkWhoWin(map);
         //then
         ResultOfRound expected = ResultOfRound.UserWon;
-        assertThat(result.message).isEqualTo(expected.message);
+        assertThat(result.result().message).isEqualTo(expected.message);
+        assertThat(result.message()).isEqualTo("Good");
     }
 
     @Test
@@ -87,10 +91,11 @@ class ResultCheckerFacadeTest {
         map.put(new Position(2, 2), 'X');
 
         //when
-        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        ResultCheckerDto result = resultCheckerFacade.checkWhoWin(map);
         //then
         ResultOfRound expected = ResultOfRound.AIWon;
-        assertThat(result.message).isEqualTo(expected.message);
+        assertThat(result.result().message).isEqualTo(expected.message);
+        assertThat(result.message()).isEqualTo("Good");
     }
 
     @Test
@@ -108,10 +113,11 @@ class ResultCheckerFacadeTest {
         map.put(new Position(1, 2), 'O');
         map.put(new Position(0, 0), 'X');
         //when
-        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        ResultCheckerDto result = resultCheckerFacade.checkWhoWin(map);
         //then
         ResultOfRound expected = ResultOfRound.AIWon;
-        assertThat(result.message).isEqualTo(expected.message);
+        assertThat(result.result().message).isEqualTo(expected.message);
+        assertThat(result.message()).isEqualTo("Good");
     }
 
     @Test
@@ -128,10 +134,11 @@ class ResultCheckerFacadeTest {
         map.put(new Position(0, 1), 'O');
 
         //when
-        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        ResultCheckerDto result = resultCheckerFacade.checkWhoWin(map);
         //then
         ResultOfRound expected = ResultOfRound.AIWon;
-        assertThat(result.message).isEqualTo(expected.message);
+        assertThat(result.result().message).isEqualTo(expected.message);
+        assertThat(result.message()).isEqualTo("Good");
     }
 
 }

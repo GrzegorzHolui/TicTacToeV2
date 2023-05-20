@@ -1,6 +1,6 @@
 package ResultChecker;
 
-enum ResultOfRound {
+public enum ResultOfRound {
 
     NoOneWon("No one won"),
 
