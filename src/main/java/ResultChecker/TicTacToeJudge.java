@@ -4,7 +4,7 @@ import PositionReceiver.Position;
 
 import java.util.Map;
 
-public class TicTacToeJudge {
+class TicTacToeJudge {
 
     public ResultOfRound decideWhoWon(Map<Position, Character> mapTicTacToe) {
         char[][] board = new char[3][3];

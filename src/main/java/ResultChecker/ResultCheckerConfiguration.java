@@ -4,11 +4,11 @@ import PositionReceiver.PositionReceiverFacade;
 
 public class ResultCheckerConfiguration {
 
-    public ResultCheckerFacade positionReceiverFacade() {
-        return new ResultCheckerFacade();
+    public ResultCheckerFacade positionReceiverFacade(TicTacToeJudge ticTacToeJudge) {
+        return new ResultCheckerFacade(ticTacToeJudge);
     }
 
-    public ResultCheckerFacade positionReceiverFacadeTest() {
-        return new ResultCheckerFacade();
+    public ResultCheckerFacade positionReceiverFacadeTest(TicTacToeJudge ticTacToeJudge) {
+        return new ResultCheckerFacade(ticTacToeJudge);
     }
 }

@@ -1,14 +1,137 @@
 package ResultChecker;
 
+import PositionReceiver.Position;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ResultCheckerFacadeTest {
 
     @Test
-    void should_return_that_user_won() {
+    void should_return_that_user_won_user_inputted_X_by_diagonal() {
+        //given
+        TicTacToeJudge ticTacToeJudge = new TicTacToeJudge();
+        ResultCheckerFacade resultCheckerFacade = new ResultCheckerConfiguration()
+                .positionReceiverFacadeTest(ticTacToeJudge);
+        Map<Position, Character> map = new HashMap<>();
+        map.put(new Position(0, 0), 'X');
+        map.put(new Position(1, 0), 'O');
+        map.put(new Position(2, 0), 'O');
+        map.put(new Position(0, 0), 'X');
+        map.put(new Position(0, 1), 'X');
+        map.put(new Position(1, 1), 'X');
+        map.put(new Position(2, 2), 'X');
+        //when
+        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        //then
+        ResultOfRound expected = ResultOfRound.UserWon;
+        assertThat(result.message).isEqualTo(expected.message);
+    }
 
+    @Test
+    void should_return_that_user_won_user_inputted_X_by_row() {
+        //given
+        TicTacToeJudge ticTacToeJudge = new TicTacToeJudge();
+        ResultCheckerFacade resultCheckerFacade = new ResultCheckerConfiguration()
+                .positionReceiverFacadeTest(ticTacToeJudge);
+        Map<Position, Character> map = new HashMap<>();
+        map.put(new Position(0, 0), 'X');
+        map.put(new Position(1, 0), 'X');
+        map.put(new Position(2, 0), 'X');
+        map.put(new Position(0, 1), 'O');
+        map.put(new Position(1, 1), 'O');
+        map.put(new Position(0, 2), 'O');
+        //when
+        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        //then
+        ResultOfRound expected = ResultOfRound.UserWon;
+        assertThat(result.message).isEqualTo(expected.message);
+    }
+
+    @Test
+    void should_return_that_user_won_user_inputted_X_by_column() {
+        //given
+        TicTacToeJudge ticTacToeJudge = new TicTacToeJudge();
+        ResultCheckerFacade resultCheckerFacade = new ResultCheckerConfiguration()
+                .positionReceiverFacadeTest(ticTacToeJudge);
+        Map<Position, Character> map = new HashMap<>();
+        map.put(new Position(0, 0), 'X');
+        map.put(new Position(0, 1), 'X');
+        map.put(new Position(0, 2), 'X');
+        map.put(new Position(1, 1), 'O');
+        map.put(new Position(2, 2), 'O');
+
+        //when
+        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        //then
+        ResultOfRound expected = ResultOfRound.UserWon;
+        assertThat(result.message).isEqualTo(expected.message);
+    }
+
+    @Test
+    void should_return_that_AI_won_user_inputted_X_by_diagonal() {
+        //given
+        TicTacToeJudge ticTacToeJudge = new TicTacToeJudge();
+        ResultCheckerFacade resultCheckerFacade = new ResultCheckerConfiguration()
+                .positionReceiverFacadeTest(ticTacToeJudge);
+        Map<Position, Character> map = new HashMap<>();
+        map.put(new Position(2, 0), 'O');
+        map.put(new Position(1, 1), 'O');
+        map.put(new Position(0, 2), 'O');
+
+        map.put(new Position(0, 0), 'X');
+        map.put(new Position(0, 1), 'X');
+        map.put(new Position(2, 2), 'X');
+
+        //when
+        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        //then
+        ResultOfRound expected = ResultOfRound.AIWon;
+        assertThat(result.message).isEqualTo(expected.message);
+    }
+
+    @Test
+    void should_return_that_AI_won_user_inputted_X_by_row() {
+        //given
+        TicTacToeJudge ticTacToeJudge = new TicTacToeJudge();
+        ResultCheckerFacade resultCheckerFacade = new ResultCheckerConfiguration()
+                .positionReceiverFacadeTest(ticTacToeJudge);
+        Map<Position, Character> map = new HashMap<>();
+
+        map.put(new Position(0, 1), 'O');
+        map.put(new Position(1, 1), 'O');
+        map.put(new Position(2, 1), 'O');
+
+        map.put(new Position(1, 2), 'O');
+        map.put(new Position(0, 0), 'X');
+        //when
+        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        //then
+        ResultOfRound expected = ResultOfRound.AIWon;
+        assertThat(result.message).isEqualTo(expected.message);
+    }
+
+    @Test
+    void should_return_that_AI_won_user_inputted_X_by_column() {
+        //given
+        TicTacToeJudge ticTacToeJudge = new TicTacToeJudge();
+        ResultCheckerFacade resultCheckerFacade = new ResultCheckerConfiguration()
+                .positionReceiverFacadeTest(ticTacToeJudge);
+        Map<Position, Character> map = new HashMap<>();
+        map.put(new Position(1, 0), 'O');
+        map.put(new Position(1, 1), 'O');
+        map.put(new Position(1, 2), 'O');
+        map.put(new Position(0, 0), 'X');
+        map.put(new Position(0, 1), 'O');
+
+        //when
+        ResultOfRound result = resultCheckerFacade.checkWhoWin(map);
+        //then
+        ResultOfRound expected = ResultOfRound.AIWon;
+        assertThat(result.message).isEqualTo(expected.message);
     }
 
 }
