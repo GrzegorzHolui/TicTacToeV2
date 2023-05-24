@@ -1,6 +1,6 @@
 package ResultChecker;
 
-
+import PositionReceiver.Position;
 import PositionReceiver.dto.PositionDto;
 
 import java.util.Map;

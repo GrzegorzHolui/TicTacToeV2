@@ -19,7 +19,7 @@ public class ResultCheckerFacade {
         if (result == null) {
             return new ResultCheckerDto(result, null);
         }
-        return new ResultCheckerDto(result, "Good");
+        return new ResultCheckerDto(result, result.message);
     }
 
 }
