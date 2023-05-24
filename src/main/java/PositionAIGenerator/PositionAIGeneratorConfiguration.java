@@ -2,15 +2,13 @@ package PositionAIGenerator;
 
 import GameState.GameStateFacade;
 
-import PositionReceiver.PositionReceiverFacade;
-
 public class PositionAIGeneratorConfiguration {
 
-    public PositionAIGeneratorFacade PositionAIGeneratorFacade(GameStateFacade gameStateFacade) {
+    public PositionAIGeneratorFacade positionAIGeneratorFacade(GameStateFacade gameStateFacade) {
         return new PositionAIGeneratorFacade(gameStateFacade);
     }
 
-    public PositionAIGeneratorFacade PositionAIGeneratorFacadeTest(GameStateFacade gameStateFacade) {
+    public PositionAIGeneratorFacade positionAIGeneratorFacadeTest(GameStateFacade gameStateFacade) {
         return new PositionAIGeneratorFacade(gameStateFacade);
     }
 }
