@@ -2,8 +2,10 @@ package PositionAIGenerator;
 
 import GameState.GameStateFacade;
 import PositionReceiver.dto.PositionDto;
+import lombok.AllArgsConstructor;
 
-public class PositionAIGenerator {
+@AllArgsConstructor
+public class PositionAIGeneratorFacade {
 
     GameStateFacade gameStateFacade;
 
