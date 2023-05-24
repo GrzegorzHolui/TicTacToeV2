@@ -1,16 +1,17 @@
 package ResultChecker;
 
-import PositionReceiver.Position;
+
+import PositionReceiver.dto.PositionDto;
 
 import java.util.Map;
 
 class TicTacToeJudge {
 
-    public ResultOfRound decideWhoWon(Map<Position, Character> mapTicTacToe) {
+    public ResultOfRound decideWhoWon(Map<PositionDto, Character> mapTicTacToe) {
         char[][] board = new char[3][3];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                Position position = new Position(i, j);
+                PositionDto position = new PositionDto(i, j);
                 if (mapTicTacToe.containsKey(position)) {
                     board[i][j] = mapTicTacToe.get(position);
                 } else {

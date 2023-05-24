@@ -1,12 +1,16 @@
 package PositionReceiver;
 
+import GameState.GameStateFacade;
+
 public class PositionReceiverConfiguration {
 
-    public PositionReceiverFacade positionReceiverFacade() {
-        return new PositionReceiverFacade();
+    public PositionReceiverFacade positionReceiverFacade(GameStateFacade gameStateFacade) {
+        PositionChecker positionChecker = new PositionChecker(gameStateFacade);
+        return new PositionReceiverFacade(positionChecker);
     }
 
-    public PositionReceiverFacade positionReceiverFacadeTest() {
-        return new PositionReceiverFacade();
+    public PositionReceiverFacade positionReceiverFacadeTest(GameStateFacade gameStateFacade) {
+        PositionChecker positionChecker = new PositionChecker(gameStateFacade);
+        return new PositionReceiverFacade(positionChecker);
     }
 }

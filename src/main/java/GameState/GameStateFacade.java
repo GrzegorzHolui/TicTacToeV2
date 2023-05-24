@@ -1,22 +1,26 @@
 package GameState;
 
-import PositionReceiver.Position;
+
+import PositionReceiver.dto.PositionDto;
 
 import java.util.Map;
 
 public class GameStateFacade {
 
-    Map<Position, Character> ticTacToeMap;
+    Map<PositionDto, Character> ticTacToeMap;
 
-    public GameStateFacade(Map<Position, Character> ticTacToeMap) {
+    public GameStateFacade(Map<PositionDto, Character> ticTacToeMap) {
         this.ticTacToeMap = ticTacToeMap;
     }
 
-    public Map<Position, Character> getCurrentTicTacToeMap() {
+    public Map<PositionDto, Character> getCurrentTicTacToeMap() {
         return ticTacToeMap;
     }
 
-    public Character inputPosition(Position position, Character sign) {
+    public Character inputPosition(PositionDto position, Character sign) {
+        if (ticTacToeMap.containsKey(position)) {
+            return null;
+        }
         Character resultOfAdd = ticTacToeMap.put(position, sign);
         return resultOfAdd;
     }

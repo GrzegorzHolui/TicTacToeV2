@@ -1,6 +1,7 @@
 package ResultChecker;
 
-import PositionReceiver.Position;
+
+import PositionReceiver.dto.PositionDto;
 import ResultChecker.dto.ResultCheckerDto;
 
 import java.util.Map;
@@ -13,7 +14,7 @@ public class ResultCheckerFacade {
         this.ticTacToeJudge = ticTacToeJudge;
     }
 
-    public ResultCheckerDto checkWhoWin(Map<Position, Character> mapTicTacToe) {
+    public ResultCheckerDto checkWhoWin(Map<PositionDto, Character> mapTicTacToe) {
         ResultOfRound result = ticTacToeJudge.decideWhoWon(mapTicTacToe);
         if (result == null) {
             return new ResultCheckerDto(result, null);

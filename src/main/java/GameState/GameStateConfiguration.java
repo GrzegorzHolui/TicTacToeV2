@@ -1,7 +1,7 @@
 package GameState;
 
-import PositionReceiver.Position;
-import PositionReceiver.PositionReceiverFacade;
+
+import PositionReceiver.dto.PositionDto;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -9,25 +9,25 @@ import java.util.Map;
 public class GameStateConfiguration {
 
     public GameStateFacade gameStateFacade() {
-        Map<Position, Character> positionCharacterMap = new LinkedHashMap<>();
+        Map<PositionDto, Character> positionCharacterMap = new LinkedHashMap<>();
         initializeMap(positionCharacterMap);
         return new GameStateFacade(positionCharacterMap);
     }
 
     public GameStateFacade gameStateFacadeTest() {
-        Map<Position, Character> positionCharacterMap = new LinkedHashMap<>();
+        Map<PositionDto, Character> positionCharacterMap = new LinkedHashMap<>();
         return new GameStateFacade(positionCharacterMap);
     }
 
-    private void initializeMap(Map<Position, Character> positionCharacterMap) {
-        positionCharacterMap.put(new Position(0, 1), null);
-        positionCharacterMap.put(new Position(0, 2), null);
-        positionCharacterMap.put(new Position(0, 3), null);
-        positionCharacterMap.put(new Position(1, 1), null);
-        positionCharacterMap.put(new Position(1, 2), null);
-        positionCharacterMap.put(new Position(1, 3), null);
-        positionCharacterMap.put(new Position(2, 1), null);
-        positionCharacterMap.put(new Position(2, 2), null);
-        positionCharacterMap.put(new Position(2, 3), null);
+    private void initializeMap(Map<PositionDto, Character> positionCharacterMap) {
+        positionCharacterMap.put(new PositionDto(0, 1), null);
+        positionCharacterMap.put(new PositionDto(0, 2), null);
+        positionCharacterMap.put(new PositionDto(0, 3), null);
+        positionCharacterMap.put(new PositionDto(1, 1), null);
+        positionCharacterMap.put(new PositionDto(1, 2), null);
+        positionCharacterMap.put(new PositionDto(1, 3), null);
+        positionCharacterMap.put(new PositionDto(2, 1), null);
+        positionCharacterMap.put(new PositionDto(2, 2), null);
+        positionCharacterMap.put(new PositionDto(2, 3), null);
     }
 }
