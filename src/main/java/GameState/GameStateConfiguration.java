@@ -21,14 +21,14 @@ public class GameStateConfiguration {
     }
 
     private void initializeMap(Map<PositionDto, Character> positionCharacterMap) {
+        positionCharacterMap.put(new PositionDto(0, 0), ' ');
         positionCharacterMap.put(new PositionDto(0, 1), ' ');
         positionCharacterMap.put(new PositionDto(0, 2), ' ');
-        positionCharacterMap.put(new PositionDto(0, 3), ' ');
+        positionCharacterMap.put(new PositionDto(1, 0), ' ');
         positionCharacterMap.put(new PositionDto(1, 1), ' ');
         positionCharacterMap.put(new PositionDto(1, 2), ' ');
-        positionCharacterMap.put(new PositionDto(1, 3), ' ');
+        positionCharacterMap.put(new PositionDto(2, 0), ' ');
         positionCharacterMap.put(new PositionDto(2, 1), ' ');
         positionCharacterMap.put(new PositionDto(2, 2), ' ');
-        positionCharacterMap.put(new PositionDto(2, 3), ' ');
     }
 }
