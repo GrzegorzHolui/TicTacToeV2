@@ -1,6 +1,7 @@
 package PositionReceiver;
 
 
+import GameState.GameStateFacade;
 import PositionReceiver.dto.PositionDto;
 import PositionReceiver.dto.PositionReceiverResultDto;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PositionReceiverFacade {
 
+    GameStateFacade gameStateFacade;
     PositionChecker positionChecker;
 
     public PositionReceiverResultDto inputPosition(Position position) {
