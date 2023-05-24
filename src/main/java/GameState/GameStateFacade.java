@@ -1,6 +1,7 @@
 package GameState;
 
 
+import PositionAIGenerator.PositionAIGeneratorFacade;
 import PositionReceiver.dto.PositionDto;
 
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Map;
 public class GameStateFacade {
 
     Map<PositionDto, Character> ticTacToeMap;
+    PositionAIGeneratorFacade positionAIGeneratorFacade;
 
     public GameStateFacade(Map<PositionDto, Character> ticTacToeMap) {
         this.ticTacToeMap = ticTacToeMap;
@@ -18,12 +20,15 @@ public class GameStateFacade {
     }
 
     public Character inputPosition(PositionDto position, Character sign) {
-        if (ticTacToeMap.containsKey(position)) {
-            return null;
-        }
         Character resultOfAdd = ticTacToeMap.put(position, sign);
         return resultOfAdd;
     }
+
+//    public PositionDto getPositionOfAi() {
+//        PositionDto positionDto = positionAIGeneratorFacade.positionGenerator();
+////        throw new RuntimeException("should return position of AI");
+//        return positionDto;
+//    }
 
 
 }
