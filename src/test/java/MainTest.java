@@ -12,6 +12,7 @@ import ResultChecker.dto.ResultCheckerDto;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,10 +55,32 @@ class MainTest {
         gameStateFacade.inputPosition(positionAiDto, 'O');
 
         Map<PositionDto, Character> currentTicTacToeMap = gameStateFacade.getCurrentTicTacToeMap();
+
+        char[][] chars = transformMapToCharArray(currentTicTacToeMap);
+
+        System.out.println(Arrays.deepToString(chars));
+
+        System.out.println(currentTicTacToeMap);
+
         ResultCheckerDto resultCheckerDto = resultCheckerFacade.checkWhoWin(currentTicTacToeMap);
 
         assertThat(resultCheckerDto.message()).isEqualTo("No one won");
     }
 
+    public char[][] transformMapToCharArray(Map<PositionDto, Character> mapTicTacToe) {
+
+        char[][] result = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                PositionDto position = new PositionDto(i, j);
+                if (mapTicTacToe.containsKey(position)) {
+                    result[i][j] = mapTicTacToe.get(position);
+                } else {
+                    result[i][j] = ' ';
+                }
+            }
+        }
+        return result;
+    }
 
 }

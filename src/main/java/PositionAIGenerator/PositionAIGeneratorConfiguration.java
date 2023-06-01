@@ -5,10 +5,14 @@ import GameState.GameStateFacade;
 public class PositionAIGeneratorConfiguration {
 
     public PositionAIGeneratorFacade positionAIGeneratorFacade(GameStateFacade gameStateFacade) {
-        return new PositionAIGeneratorFacade(gameStateFacade);
+        MinMaxAlgorithmGenerator minMaxAlgorithmGenerator = new MinMaxAlgorithmGenerator();
+        MapToArrayCharMapper mapToArrayCharMapper = new MapToArrayCharMapper();
+        return new PositionAIGeneratorFacade(gameStateFacade, minMaxAlgorithmGenerator, mapToArrayCharMapper);
     }
 
     public PositionAIGeneratorFacade positionAIGeneratorFacadeTest(GameStateFacade gameStateFacade) {
-        return new PositionAIGeneratorFacade(gameStateFacade);
+        MinMaxAlgorithmGenerator minMaxAlgorithmGenerator = new MinMaxAlgorithmGenerator();
+        MapToArrayCharMapper mapToArrayCharMapper = new MapToArrayCharMapper();
+        return new PositionAIGeneratorFacade(gameStateFacade, minMaxAlgorithmGenerator, mapToArrayCharMapper);
     }
 }
