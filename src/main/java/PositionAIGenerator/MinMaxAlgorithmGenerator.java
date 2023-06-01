@@ -1,12 +1,14 @@
 package PositionAIGenerator;
 
 public class MinMaxAlgorithmGenerator {
-    char player = 'x', opponent = 'o';
+    char player = 'X', opponent = 'O';
+
+    char empty = ' ';
 
     Boolean isMovesLeft(char board[][]) {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
-                if (board[i][j] == '_')
+                if (board[i][j] == empty)
                     return true;
         return false;
     }
@@ -86,7 +88,7 @@ public class MinMaxAlgorithmGenerator {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     // Check if cell is empty
-                    if (board[i][j] == '_') {
+                    if (board[i][j] == empty) {
                         // Make the move
                         board[i][j] = player;
 
@@ -96,7 +98,7 @@ public class MinMaxAlgorithmGenerator {
                                 depth + 1, !isMax));
 
                         // Undo the move
-                        board[i][j] = '_';
+                        board[i][j] = empty;
                     }
                 }
             }
@@ -111,7 +113,7 @@ public class MinMaxAlgorithmGenerator {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     // Check if cell is empty
-                    if (board[i][j] == '_') {
+                    if (board[i][j] == empty) {
                         // Make the move
                         board[i][j] = opponent;
 
@@ -121,7 +123,7 @@ public class MinMaxAlgorithmGenerator {
                                 depth + 1, !isMax));
 
                         // Undo the move
-                        board[i][j] = '_';
+                        board[i][j] = empty;
                     }
                 }
             }
@@ -143,7 +145,7 @@ public class MinMaxAlgorithmGenerator {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 // Check if cell is empty
-                if (board[i][j] == '_') {
+                if (board[i][j] == empty) {
                     // Make the move
                     board[i][j] = player;
 
@@ -152,7 +154,7 @@ public class MinMaxAlgorithmGenerator {
                     int moveVal = minimax(board, 0, false);
 
                     // Undo the move
-                    board[i][j] = '_';
+                    board[i][j] = empty;
 
                     // If the value of the current move is
                     // more than the best value, then update
