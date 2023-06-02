@@ -1,4 +1,4 @@
-import java.util.*;
+
 
 public class TicTacToe {
 
@@ -8,13 +8,14 @@ public class TicTacToe {
 
     public static void main(String[] args) {
         char[][] board = {
-                {'X', '-', '-', '-'},
-                {'O', '-', 'O', 'X'},
-                {'-', '-', '-', 'O'},
-                {'-', '-', '-', 'O'}
+                {'X', 'X', 'X', 'O'},
+                {'X', 'O', 'O', 'O'},
+                {'X', 'O', 'X', 'O'},
+                {'X', 'O', 'O', 'X'}
         };
+
         int size = 4; // Size of the board
-        int numToWin = 3; // Number of characters in a row needed to win
+        int numToWin = 4; // Number of characters in a row needed to win
 
         int[] bestMove = getBestMove(board, size, numToWin);
         System.out.println("Best move: (" + bestMove[0] + ", " + bestMove[1] + ")");
@@ -23,6 +24,24 @@ public class TicTacToe {
     public static int[] getBestMove(char[][] board, int size, int numToWin) {
         int bestScore = Integer.MIN_VALUE;
         int[] bestMove = new int[2];
+
+        if (isBoardFull(board, size) && evaluate(board, size, numToWin) == -10) {
+            bestMove[0] = -1; // Indicate that the game is already won by the opponent
+            bestMove[1] = -1;
+            return bestMove;
+        }
+
+        if (evaluate(board, size, numToWin) == 10) {
+            bestMove[0] = -1; // Indicate that the game is already won by the opponent
+            bestMove[1] = -1;
+            return bestMove;
+        }
+//        else if (evaluate(board, size, numToWin) == -10) {
+//            bestMove[0] = -1; // Indicate that the game is already won by the opponent
+//            bestMove[1] = -1;
+//            return bestMove;
+//        }
+
 
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
