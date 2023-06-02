@@ -31,15 +31,15 @@ public class PositionAIGeneratorFacade {
         PositionAIGeneratorConfiguration positionAIGeneratorConfiguration = new PositionAIGeneratorConfiguration();
         Map<PositionDto, Character> map = new HashMap<>();
 
-        map.put(new PositionDto(0, 0), ' ');
+        map.put(new PositionDto(0, 0), 'X');
         map.put(new PositionDto(0, 1), 'X');
-        map.put(new PositionDto(0, 2), ' ');
+        map.put(new PositionDto(0, 2), 'O');
         map.put(new PositionDto(1, 0), 'O');
         map.put(new PositionDto(1, 1), 'O');
         map.put(new PositionDto(1, 2), 'X');
-        map.put(new PositionDto(2, 0), ' ');
-        map.put(new PositionDto(2, 1), ' ');
-        map.put(new PositionDto(2, 2), ' ');
+        map.put(new PositionDto(2, 0), 'X');
+        map.put(new PositionDto(2, 1), 'O');
+        map.put(new PositionDto(2, 2), 'O');
 
         GameStateFacade gameStateFacade1 = new GameStateFacade(map);
         PositionAIGeneratorFacade positionAIGeneratorFacade =
