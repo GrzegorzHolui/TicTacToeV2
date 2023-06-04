@@ -18,25 +18,25 @@ class PositionAIGeneratorFacadeTest {
         //given
         Map<PositionDto, Character> map = new HashMap<>();
 
-        map.put(new PositionDto(0, 0), ' ');
-        map.put(new PositionDto(0, 1), 'X');
-        map.put(new PositionDto(0, 2), ' ');
-        map.put(new PositionDto(1, 0), 'O');
+        map.put(new PositionDto(0, 0), '-');
+        map.put(new PositionDto(0, 1), '-');
+        map.put(new PositionDto(0, 2), 'X');
+        map.put(new PositionDto(1, 0), '-');
         map.put(new PositionDto(1, 1), 'O');
-        map.put(new PositionDto(1, 2), 'X');
-        map.put(new PositionDto(2, 0), ' ');
-        map.put(new PositionDto(2, 1), ' ');
-        map.put(new PositionDto(2, 2), ' ');
+        map.put(new PositionDto(1, 2), 'O');
+        map.put(new PositionDto(2, 0), '-');
+        map.put(new PositionDto(2, 1), '-');
+        map.put(new PositionDto(2, 2), '-');
 
         PositionAIGeneratorConfiguration positionAIGeneratorConfiguration = new PositionAIGeneratorConfiguration();
         PositionAIGeneratorFacade positionAIGeneratorFacade =
-                positionAIGeneratorConfiguration.positionAIGeneratorFacadeTest(new GameStateFacade(map));
+                positionAIGeneratorConfiguration.positionAIGeneratorFacadeTest(new GameStateFacade(map, 3, 3));
 
         //when
         PositionDto result = positionAIGeneratorFacade.positionGenerator();
 
         //then
-        PositionDto expected = new PositionDto(0, 2);
+        PositionDto expected = new PositionDto(1, 0);
         assertThat(result).isEqualTo(expected);
     }
 }

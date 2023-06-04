@@ -6,22 +6,25 @@ public class TicTacToe {
     private static final char PLAYER = 'X';
     private static final char COMPUTER = 'O';
 
+    static int counter = 0;
+
     public static void main(String[] args) {
         char[][] board = {
-                {'X', 'X', 'X', 'O'},
-                {'X', 'O', 'O', 'O'},
-                {'X', 'O', 'X', 'O'},
-                {'X', 'O', 'O', 'X'}
+                {'-', '-', '-', '-', '-'},
+                {'-', '-', '-', '-', '-'},
+                {'-', '-', 'X', '-', '-'},
+                {'-', '-', '-', '-', '-'},
+                {'-', '-', '-', '-', '-'}
         };
 
-        int size = 4; // Size of the board
-        int numToWin = 4; // Number of characters in a row needed to win
+        int size = 5; // Size of the board
+        int numToWin = 5; // Number of characters in a row needed to win
 
-        int[] bestMove = getBestMove(board, size, numToWin);
+        int[] bestMove = getBestMove(board, size, numToWin, 9);
         System.out.println("Best move: (" + bestMove[0] + ", " + bestMove[1] + ")");
     }
 
-    public static int[] getBestMove(char[][] board, int size, int numToWin) {
+    public static int[] getBestMove(char[][] board, int size, int numToWin, int maxDepth) {
         int bestScore = Integer.MIN_VALUE;
         int[] bestMove = new int[2];
 
@@ -36,18 +39,12 @@ public class TicTacToe {
             bestMove[1] = -1;
             return bestMove;
         }
-//        else if (evaluate(board, size, numToWin) == -10) {
-//            bestMove[0] = -1; // Indicate that the game is already won by the opponent
-//            bestMove[1] = -1;
-//            return bestMove;
-//        }
-
 
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 if (board[row][col] == EMPTY) {
                     board[row][col] = COMPUTER;
-                    int score = minimax(board, size, numToWin, 0, false, Integer.MIN_VALUE, Integer.MAX_VALUE);
+                    int score = minimax(board, size, numToWin, 0, false, Integer.MIN_VALUE, Integer.MAX_VALUE, maxDepth);
                     board[row][col] = EMPTY;
 
                     if (score > bestScore) {
@@ -62,10 +59,11 @@ public class TicTacToe {
         return bestMove;
     }
 
-    public static int minimax(char[][] board, int size, int numToWin, int depth, boolean isMaximizingPlayer, int alpha, int beta) {
+    public static int minimax(char[][] board, int size, int numToWin, int depth, boolean isMaximizingPlayer, int alpha, int beta, int maxDepth) {
+        counter++;
         int score = evaluate(board, size, numToWin);
 
-        if (score == 10 || score == -10)
+        if (score == 10 || score == -10 || depth >= maxDepth)
             return score - depth;
 
         if (isBoardFull(board, size))
@@ -78,7 +76,7 @@ public class TicTacToe {
                 for (int col = 0; col < size; col++) {
                     if (board[row][col] == EMPTY) {
                         board[row][col] = COMPUTER;
-                        int currentScore = minimax(board, size, numToWin, depth + 1, false, alpha, beta);
+                        int currentScore = minimax(board, size, numToWin, depth + 1, false, alpha, beta, maxDepth);
                         board[row][col] = EMPTY;
 
                         maxScore = Math.max(maxScore, currentScore);
@@ -98,7 +96,7 @@ public class TicTacToe {
                 for (int col = 0; col < size; col++) {
                     if (board[row][col] == EMPTY) {
                         board[row][col] = PLAYER;
-                        int currentScore = minimax(board, size, numToWin, depth + 1, true, alpha, beta);
+                        int currentScore = minimax(board, size, numToWin, depth + 1, true, alpha, beta, maxDepth);
                         board[row][col] = EMPTY;
 
                         minScore = Math.min(minScore, currentScore);

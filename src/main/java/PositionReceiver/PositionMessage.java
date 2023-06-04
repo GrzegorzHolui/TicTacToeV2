@@ -1,6 +1,8 @@
 package PositionReceiver;
 
-enum PositionMessage {
+import java.util.Collection;
+
+enum PositionMessage   {
     positionIsEngaged("positionIsEngaged"),
 
     positionIsEmpty("positionIsEmpty everything works"),

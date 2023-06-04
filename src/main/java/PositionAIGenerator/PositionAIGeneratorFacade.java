@@ -19,10 +19,11 @@ public class PositionAIGeneratorFacade {
     public PositionDto positionGenerator() {
         Map<PositionDto, Character> currentTicTacToeMap = gameStateFacade.getCurrentTicTacToeMap();
         char[][] mapChars = mapToArrayCharMapper.transformMapToCharArray(currentTicTacToeMap);
-        Move bestMove = minMaxAlgorithmGenerator.findBestMove(mapChars);
+        int[] bestMove = minMaxAlgorithmGenerator.getBestMove
+                (mapChars, gameStateFacade.getDimensionsOfTicTacToe(), gameStateFacade.getRowToWin(), Integer.MAX_VALUE);
         PositionDto positionDtoResult = PositionDto.builder()
-                .x(bestMove.row)
-                .y(bestMove.col)
+                .x(bestMove[0])
+                .y(bestMove[1])
                 .build();
         return positionDtoResult;
     }

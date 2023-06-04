@@ -8,12 +8,11 @@ import java.util.Map;
 
 public class MapDrawerFacade {
 
-    GameStateFacade gameStateFacade;
-
     public void printMap(Map<PositionDto, Character> currentTicTacToeMap) {
+        int size = (int) Math.sqrt(currentTicTacToeMap.size());
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 Character character = currentTicTacToeMap.get(new PositionDto(i, j));
                 System.out.print(character + " ");
             }
@@ -34,8 +33,8 @@ public class MapDrawerFacade {
         map.put(new PositionDto(0, 1), 'O');
         map.put(new PositionDto(0, 2), 'O');
         map.put(new PositionDto(1, 0), 'X');
-        map.put(new PositionDto(1, 1), ' ');
-        map.put(new PositionDto(1, 2), ' ');
+        map.put(new PositionDto(1, 1), '-');
+        map.put(new PositionDto(1, 2), '-');
         map.put(new PositionDto(2, 0), 'X');
         map.put(new PositionDto(2, 1), 'X');
         map.put(new PositionDto(2, 2), 'X');
