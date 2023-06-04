@@ -1,6 +1,7 @@
 package ResultChecker;
 
 
+import GameState.GameStateFacade;
 import PositionReceiver.dto.PositionDto;
 import ResultChecker.dto.ResultCheckerDto;
 

@@ -6,13 +6,11 @@ public enum ResultOfRound {
 
     AIWon("AI won"),
 
-    UserWon("User won"),
-
-    Draw("Draw");
+    UserWon("User won");
 
     final String message;
 
     ResultOfRound(String message) {
         this.message = message;
     }
-}
+    }
