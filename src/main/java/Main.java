@@ -53,7 +53,9 @@ public class Main {
             System.out.println("Give me position of y");
             int y = Integer.parseInt(scanner.nextLine());
             PositionReceiverResultDto positionReceiverResultDto = positionReceiverFacade.inputPosition(new Position(x, y));
+
             if (positionReceiverResultDto.message().equals("positionIsEmpty everything works")) {
+                gameStateFacade.inputPosition(new PositionDto(x, y), 'X');
                 ResultCheckerDto resultCheckerDto = resultCheckerFacade.checkWhoWin();
 
                 if (!Objects.equals(resultCheckerDto.message(), "No one won")) {
@@ -63,7 +65,6 @@ public class Main {
                     }
                 }
 
-                gameStateFacade.inputPosition(new PositionDto(x, y), 'X');
                 PositionDto positionDto = positionAIGeneratorFacade.positionGenerator();
                 gameStateFacade.inputPosition(positionDto, 'O');
                 resultCheckerDto = resultCheckerFacade.checkWhoWin();
