@@ -9,6 +9,7 @@ import java.util.Map;
 @AllArgsConstructor
 class PositionChecker {
 
+    private static char emptyField = '-';
     GameStateFacade gameStateFacade;
 
     public PositionMessage checkPosition(PositionDto position) {
@@ -31,7 +32,7 @@ class PositionChecker {
 
     private static boolean isValueAtPosition(PositionDto position, Map<PositionDto, Character> currentTicTacToeMap) {
         Character character = currentTicTacToeMap.get(position);
-        if (character == null) {
+        if (character == emptyField) {
             return false;
         } else {
             return true;

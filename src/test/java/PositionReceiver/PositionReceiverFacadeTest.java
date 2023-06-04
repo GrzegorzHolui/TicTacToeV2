@@ -14,12 +14,12 @@ class PositionReceiverFacadeTest {
 
 
     @Test
-    void should_return_that_positionIsEmpty_everything_works() {
+    void should_return_that_positionIsEmpty_everything_works1() {
         //given
         Map<PositionDto, Character> map = new HashMap<>();
-        initializeMap1(map);
+        initializeMap(map, 3);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);
@@ -40,12 +40,38 @@ class PositionReceiverFacadeTest {
     }
 
     @Test
+    void should_return_that_positionIsEmpty_everything_works2() {
+        //given
+        Map<PositionDto, Character> map = new HashMap<>();
+        initializeMap(map, 10);
+
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 10);
+
+        PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
+                .positionReceiverFacadeTest(gameStateFacade);
+
+        int x = 9;
+        int y = 9;
+        Position position = new Position(x, y);
+        //when
+        PositionReceiverResultDto resultDto = positionReceiverFacade.inputPosition(position);
+        //then
+        PositionDto positionDtoExpected = new PositionDto(x, y);
+        PositionReceiverResultDto expected = PositionReceiverResultDto
+                .builder()
+                .position(positionDtoExpected)
+                .message("positionIsEmpty everything works")
+                .build();
+        assertThat(resultDto).isEqualTo(expected);
+    }
+
+    @Test
     void should_return_that_position_Is_Engaged() {
         //given
         Map<PositionDto, Character> map = new HashMap<>();
-        initializeMap2(map);
+        initializeMap(map);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);
@@ -69,9 +95,9 @@ class PositionReceiverFacadeTest {
     void should_return_that_position_Is_Out_Of_The_Box() {
         //given
         Map<PositionDto, Character> map = new HashMap<>();
-        initializeMap2(map);
+        initializeMap(map);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);
@@ -91,28 +117,25 @@ class PositionReceiverFacadeTest {
         assertThat(resultDto).isEqualTo(expected);
     }
 
-    private void initializeMap1(Map<PositionDto, Character> positionCharacterMap) {
-        positionCharacterMap.put(new PositionDto(0, 1), null);
-        positionCharacterMap.put(new PositionDto(0, 2), null);
-        positionCharacterMap.put(new PositionDto(0, 3), null);
-        positionCharacterMap.put(new PositionDto(1, 1), null);
-        positionCharacterMap.put(new PositionDto(1, 2), null);
-        positionCharacterMap.put(new PositionDto(1, 3), null);
-        positionCharacterMap.put(new PositionDto(2, 1), null);
-        positionCharacterMap.put(new PositionDto(2, 2), null);
-        positionCharacterMap.put(new PositionDto(2, 3), null);
+    private void initializeMap(Map<PositionDto, Character> positionCharacterMap, int dimensions) {
+        for (int i = 0; i < dimensions; i++) {
+            for (int j = 0; j < dimensions; j++) {
+                PositionDto positionDto = new PositionDto(i, j);
+                positionCharacterMap.put(positionDto, '-');
+            }
+        }
     }
 
-    private void initializeMap2(Map<PositionDto, Character> positionCharacterMap) {
-        positionCharacterMap.put(new PositionDto(0, 1), null);
-        positionCharacterMap.put(new PositionDto(0, 2), null);
-        positionCharacterMap.put(new PositionDto(0, 3), null);
+    private void initializeMap(Map<PositionDto, Character> positionCharacterMap) {
+        positionCharacterMap.put(new PositionDto(0, 1), '-');
+        positionCharacterMap.put(new PositionDto(0, 2), '-');
+        positionCharacterMap.put(new PositionDto(0, 3), '-');
         positionCharacterMap.put(new PositionDto(1, 1), 'X');
-        positionCharacterMap.put(new PositionDto(1, 2), null);
-        positionCharacterMap.put(new PositionDto(1, 3), null);
-        positionCharacterMap.put(new PositionDto(2, 1), null);
-        positionCharacterMap.put(new PositionDto(2, 2), null);
-        positionCharacterMap.put(new PositionDto(2, 3), null);
+        positionCharacterMap.put(new PositionDto(1, 2), '-');
+        positionCharacterMap.put(new PositionDto(1, 3), '-');
+        positionCharacterMap.put(new PositionDto(2, 1), '-');
+        positionCharacterMap.put(new PositionDto(2, 2), '-');
+        positionCharacterMap.put(new PositionDto(2, 3), '-');
     }
 
 }
