@@ -23,4 +23,12 @@ public class ResultCheckerFacade {
         return new ResultCheckerDto(result, result.message);
     }
 
+    public ResultCheckerDto checkWhoWin() {
+        ResultOfRound result = ticTacToeJudge.decideWhoWon();
+        if (result == null) {
+            return new ResultCheckerDto(result, null);
+        }
+        return new ResultCheckerDto(result, result.message);
+    }
+
 }

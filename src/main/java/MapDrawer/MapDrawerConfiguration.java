@@ -6,11 +6,11 @@ import PositionAIGenerator.PositionAIGeneratorFacade;
 public class MapDrawerConfiguration {
 
 
-    public MapDrawerFacade MapDrawerFacadeFacade() {
-        return new MapDrawerFacade();
+    public MapDrawerFacade MapDrawerFacadeFacade(GameStateFacade gameStateFacade) {
+        return new MapDrawerFacade(gameStateFacade);
     }
 
-    public MapDrawerFacade MapDrawerFacadeFacadeTest() {
-        return new MapDrawerFacade();
+    public MapDrawerFacade MapDrawerFacadeFacadeTest(GameStateFacade gameStateFacade) {
+        return new MapDrawerFacade(gameStateFacade);
     }
 }

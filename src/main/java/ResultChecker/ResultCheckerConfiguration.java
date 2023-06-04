@@ -8,8 +8,7 @@ import java.util.Map;
 
 public class ResultCheckerConfiguration {
 
-    public ResultCheckerFacade positionReceiverFacade(Map<PositionDto, Character> map, int dimensions, int rowToWin) {
-        GameStateFacade gameStateFacade = new GameStateFacade(map, dimensions, rowToWin);
+    public ResultCheckerFacade positionReceiverFacade(GameStateFacade gameStateFacade) {
         TicTacToeJudge ticTacToeJudge = new TicTacToeJudge(gameStateFacade);
         return new ResultCheckerFacade(ticTacToeJudge);
     }

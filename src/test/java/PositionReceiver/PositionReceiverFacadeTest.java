@@ -19,7 +19,7 @@ class PositionReceiverFacadeTest {
         Map<PositionDto, Character> map = new HashMap<>();
         initializeMap(map, 3);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map, 3);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 3,3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);
@@ -45,7 +45,7 @@ class PositionReceiverFacadeTest {
         Map<PositionDto, Character> map = new HashMap<>();
         initializeMap(map, 10);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map, 10);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 10,3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);
@@ -71,7 +71,7 @@ class PositionReceiverFacadeTest {
         Map<PositionDto, Character> map = new HashMap<>();
         initializeMap(map);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map, 3);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 3,3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);
@@ -97,7 +97,7 @@ class PositionReceiverFacadeTest {
         Map<PositionDto, Character> map = new HashMap<>();
         initializeMap(map);
 
-        GameStateFacade gameStateFacade = new GameStateFacade(map, 3);
+        GameStateFacade gameStateFacade = new GameStateFacade(map, 3,3);
 
         PositionReceiverFacade positionReceiverFacade = new PositionReceiverConfiguration()
                 .positionReceiverFacadeTest(gameStateFacade);

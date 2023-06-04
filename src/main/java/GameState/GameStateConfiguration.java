@@ -10,14 +10,12 @@ import java.util.Map;
 
 public class GameStateConfiguration {
 
-    public GameStateFacade gameStateFacade() {
-        Map<PositionDto, Character> positionCharacterMap = new LinkedHashMap<>();
-        return new GameStateFacade(positionCharacterMap);
+    public GameStateFacade gameStateFacade(Map<PositionDto, Character> positionCharacterMap,int dimensions, int rowToWin) {
+        return new GameStateFacade(positionCharacterMap,dimensions,rowToWin);
     }
 
-    public GameStateFacade gameStateFacadeTest() {
-        Map<PositionDto, Character> positionCharacterMap = new LinkedHashMap<>();
-        return new GameStateFacade(positionCharacterMap);
+    public GameStateFacade gameStateFacadeTest(Map<PositionDto, Character> positionCharacterMap,int dimensions, int rowToWin) {
+        return new GameStateFacade(positionCharacterMap,dimensions,rowToWin);
     }
 
 

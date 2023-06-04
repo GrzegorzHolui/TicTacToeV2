@@ -11,23 +11,14 @@ public class GameStateFacade {
 
     private int rowToWin;
 
-    public int getRowToWin() {
-        return rowToWin;
-    }
-
     public GameStateFacade(Map<PositionDto, Character> ticTacToeMap, int dimensionsOfTicTacToe, int rowToWin) {
         this.ticTacToeMap = ticTacToeMap;
         this.dimensionsOfTicTacToe = dimensionsOfTicTacToe;
         this.rowToWin = rowToWin;
     }
 
-    public GameStateFacade(Map<PositionDto, Character> ticTacToeMap) {
-        this.ticTacToeMap = ticTacToeMap;
-    }
-
-    public GameStateFacade(Map<PositionDto, Character> ticTacToeMap, int dimensionsOfTicTacToe) {
-        this.ticTacToeMap = ticTacToeMap;
-        this.dimensionsOfTicTacToe = dimensionsOfTicTacToe;
+    public int getRowToWin() {
+        return rowToWin;
     }
 
     public Map<PositionDto, Character> getCurrentTicTacToeMap() {
@@ -47,6 +38,15 @@ public class GameStateFacade {
 
     public int getDimensionsOfTicTacToe() {
         return dimensionsOfTicTacToe;
+    }
+
+    public boolean isBoardFull() {
+        for (Character value : ticTacToeMap.values()) {
+            if (value == '-') {
+                return false;
+            }
+        }
+        return true;
     }
     //    public PositionDto getPositionOfAi() {
 //        PositionDto positionDto = positionAIGeneratorFacade.positionGenerator();
