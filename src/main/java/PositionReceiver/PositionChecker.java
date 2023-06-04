@@ -12,16 +12,17 @@ class PositionChecker {
     GameStateFacade gameStateFacade;
 
     public PositionMessage checkPosition(PositionDto position) {
+        int dimensions = gameStateFacade.getDimensionsOfTicTacToe();
 
         PositionMessage result = null;
 
         Map<PositionDto, Character> currentTicTacToeMap = gameStateFacade.getCurrentTicTacToeMap();
 
-        if (position.x() > 2 || position.x() < 0 || position.y() > 2 || position.y() < 0) {
+        if (position.x() > dimensions || position.x() < 0 || position.y() > dimensions || position.y() < 0) {
             result = PositionMessage.positionIsOutOfTheBox;
         } else if (isValueAtPosition(position, currentTicTacToeMap)) {
             result = PositionMessage.positionIsEngaged;
-        } else  {
+        } else {
             result = PositionMessage.positionIsEmpty;
         }
 
