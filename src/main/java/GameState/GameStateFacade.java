@@ -9,6 +9,18 @@ public class GameStateFacade {
     private Map<PositionDto, Character> ticTacToeMap;
     private int dimensionsOfTicTacToe;
 
+    private int rowToWin;
+
+    public int getRowToWin() {
+        return rowToWin;
+    }
+
+    public GameStateFacade(Map<PositionDto, Character> ticTacToeMap, int dimensionsOfTicTacToe, int rowToWin) {
+        this.ticTacToeMap = ticTacToeMap;
+        this.dimensionsOfTicTacToe = dimensionsOfTicTacToe;
+        this.rowToWin = rowToWin;
+    }
+
     public GameStateFacade(Map<PositionDto, Character> ticTacToeMap) {
         this.ticTacToeMap = ticTacToeMap;
     }
@@ -31,6 +43,7 @@ public class GameStateFacade {
 //        initiazlizeMap();
         this.dimensionsOfTicTacToe = dimensions;
     }
+
 
     public int getDimensionsOfTicTacToe() {
         return dimensionsOfTicTacToe;
