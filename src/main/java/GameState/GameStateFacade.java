@@ -1,18 +1,21 @@
 package GameState;
 
-
-import PositionAIGenerator.PositionAIGeneratorFacade;
 import PositionReceiver.dto.PositionDto;
 
 import java.util.Map;
 
 public class GameStateFacade {
 
-    Map<PositionDto, Character> ticTacToeMap;
-    PositionAIGeneratorFacade positionAIGeneratorFacade;
+    private Map<PositionDto, Character> ticTacToeMap;
+    private int dimensionsOfTicTacToe;
 
     public GameStateFacade(Map<PositionDto, Character> ticTacToeMap) {
         this.ticTacToeMap = ticTacToeMap;
+    }
+
+    public GameStateFacade(Map<PositionDto, Character> ticTacToeMap, int dimensionsOfTicTacToe) {
+        this.ticTacToeMap = ticTacToeMap;
+        this.dimensionsOfTicTacToe = dimensionsOfTicTacToe;
     }
 
     public Map<PositionDto, Character> getCurrentTicTacToeMap() {
@@ -24,10 +27,30 @@ public class GameStateFacade {
         return resultOfAdd;
     }
 
-//    public PositionDto getPositionOfAi() {
+    public void setDimensions(int dimensions) {
+//        initiazlizeMap();
+        this.dimensionsOfTicTacToe = dimensions;
+    }
+
+    public int getDimensionsOfTicTacToe() {
+        return dimensionsOfTicTacToe;
+    }
+    //    public PositionDto getPositionOfAi() {
 //        PositionDto positionDto = positionAIGeneratorFacade.positionGenerator();
 ////        throw new RuntimeException("should return position of AI");
 //        return positionDto;
+//    }
+
+//    private void initializeMap(Map<PositionDto, Character> positionCharacterMap) {
+//        positionCharacterMap.put(new PositionDto(0, 0), ' ');
+//        positionCharacterMap.put(new PositionDto(0, 1), ' ');
+//        positionCharacterMap.put(new PositionDto(0, 2), ' ');
+//        positionCharacterMap.put(new PositionDto(1, 0), ' ');
+//        positionCharacterMap.put(new PositionDto(1, 1), ' ');
+//        positionCharacterMap.put(new PositionDto(1, 2), ' ');
+//        positionCharacterMap.put(new PositionDto(2, 0), ' ');
+//        positionCharacterMap.put(new PositionDto(2, 1), ' ');
+//        positionCharacterMap.put(new PositionDto(2, 2), ' ');
 //    }
 
 
